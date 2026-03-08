@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Report: Welcome Email #1 | Neonblue</title>
+    <meta name="description" content="Results and analysis for the Welcome Email #1 test campaign.">
+    <!-- Fonts matching Neonblue brand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+    <div class="background-effects">
+        <!-- Faint grid overlay for texture -->
+        <div class="grid-overlay"></div>
+        <!-- Volumetric top glow -->
+        <div class="glow-orb top-left"></div>
+        <!-- Volumetric center-right glow -->
+        <div class="glow-orb bottom-right"></div>
+    </div>
+
+    <div class="container relative z-10 fade-in">
+        <!-- Header -->
+        <header class="report-header slide-up">
+            <div class="header-content">
+                <h1>Welcome Email #1</h1>
+                <p class="subtitle">Test Analysis & Strategic Next Steps <span class="divider">•</span> Data as of March
+                    5, 2026</p>
+            </div>
+            <div class="header-actions">
+                <a href="proposal.html" class="btn btn-secondary shadow-hover"><i data-feather="file-text"></i>
+                    Proposal</a>
+                <a href="#" class="btn btn-primary pulse-hover"><i data-feather="external-link"></i> Canvas</a>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="report-grid">
+
+            <!-- Left Column: Context -->
+            <aside class="sidebar">
+                <div class="glass-card slide-up" style="animation-delay: 0.1s;">
+                    <div class="card-header">
+                        <div class="icon-wrapper blue"><i data-feather="layout"></i></div>
+                        <h2>Test Structure</h2>
+                    </div>
+                    <ul class="meta-list">
+                        <li>
+                            <span class="meta-label">Flow</span>
+                            <span class="meta-value">Welcome Email #1</span>
+                        </li>
+                        <li>
+                            <span class="meta-label">Period</span>
+                            <span class="meta-value">Several months</span>
+                        </li>
+                        <li>
+                            <span class="meta-label">Variants</span>
+                            <span class="meta-value highlight">8 Variants</span>
+                        </li>
+                        <li>
+                            <span class="meta-label">Message Spec</span>
+                            <span class="meta-value link-style">Klaviyo Template</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card slide-up" style="animation-delay: 0.2s;">
+                    <div class="card-header">
+                        <div class="icon-wrapper indigo"><i data-feather="help-circle"></i></div>
+                        <h2>Test Hypothesis</h2>
+                    </div>
+                    <div class="hypothesis-content">
+                        <p class="direction-text"><strong>Overall Direction:</strong> Test different email tones to
+                            optimize early engagement.</p>
+                        <p class="hypothesis-text">"Tailoring the tone of the welcome email (e.g., formal, casual,
+                            playful) will drive higher clip creation compared to a generic tone or no email."</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Column: Results -->
+            <main class="main-content">
+                <!-- KPI Section -->
+                <section class="kpi-grid">
+                    <div class="kpi-card glass-card slide-up" style="animation-delay: 0.3s;">
+                        <span class="kpi-label">Primary KPI: Clips per User</span>
+                        <div class="kpi-value text-glow">12.8 <span class="trend neutral">No Diff</span></div>
+                        <span class="kpi-context">vs. Control / No Send</span>
+                    </div>
+                    <div class="kpi-card glass-card slide-up" style="animation-delay: 0.4s;">
+                        <span class="kpi-label">Secondary KPI: Subscriptions</span>
+                        <div class="kpi-value">Flat <span class="trend neutral">0% var</span></div>
+                        <span class="kpi-context">Across all variants</span>
+                    </div>
+                    <div class="kpi-card glass-card slide-up" style="animation-delay: 0.5s;">
+                        <span class="kpi-label">Guardrails</span>
+                        <div class="kpi-value text-cream">Healthy</div>
+                        <span class="kpi-context">No flags on unsubscribes or churn</span>
+                    </div>
+                </section>
+
+                <!-- Conclusion Banner -->
+                <section class="conclusion-banner glass-card effect-card slide-up" style="animation-delay: 0.6s;">
+                    <div class="banner-border-top"></div>
+                    <div class="result-icon pulse">
+                        <i data-feather="alert-circle"></i>
+                    </div>
+                    <div class="result-text">
+                        <h3>Hypothesis Not Supported</h3>
+                        <p>Tone makes <strong>no difference</strong> on clip creation. All 8 experimental tones and the
+                            control group perform identically.</p>
+                    </div>
+                </section>
+
+                <!-- Chart Section -->
+                <section class="chart-section glass-card slide-up" style="animation-delay: 0.7s;">
+                    <div class="card-header flex-between mb-2">
+                        <div class="flex items-center gap-14 list-none-margin">
+                            <div class="icon-wrapper blue"><i data-feather="bar-chart-2"></i></div>
+                            <h2>Performance by Variant</h2>
+                        </div>
+                        <div class="kpi-tabs">
+                            <button class="kpi-tab active" data-metric="clips">Clips per User</button>
+                            <button class="kpi-tab" data-metric="subscriptions">Subscriptions</button>
+                            <button class="kpi-tab" data-metric="engagement">Engagement</button>
+                        </div>
+                    </div>
+                    <p class="chart-subtitle" id="chart-subtitle-text">When all bars look the same height, that IS the
+                        finding.</p>
+
+                    <div class="mock-chart">
+                        <div class="y-axis" id="y-axis-labels">
+                            <span>14</span>
+                            <span>8</span>
+                            <span>4</span>
+                            <span>0</span>
+                        </div>
+                        <div class="chart-bars">
+                            <div class="bar-group">
+                                <div class="bar" style="--target-height: 91%;"></div><span
+                                    class="bar-label">Control</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="--target-height: 90%;"></div><span class="bar-label">No
+                                    Send</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="--target-height: 91%;"></div><span class="bar-label">Fully
+                                    Pro</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="--target-height: 92%;"></div><span
+                                    class="bar-label">Semi-Formal</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="--target-height: 90%;"></div><span
+                                    class="bar-label">Social</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="--target-height: 91%;"></div><span
+                                    class="bar-label">Neutral</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="--target-height: 92%;"></div><span
+                                    class="bar-label">Informal</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar" style="--target-height: 90%;"></div><span class="bar-label">Very
+                                    Inf.</span>
+                            </div>
+                        </div>
+                        <div class="chart-baseline"></div>
+                    </div>
+                </section>
+
+                <!-- Persona Section -->
+                <section class="persona-section glass-card slide-up" style="animation-delay: 0.75s;">
+                    <div class="card-header">
+                        <div class="icon-wrapper purple"><i data-feather="users"></i></div>
+                        <h2>Performance by Persona Segment</h2>
+                    </div>
+                    <p class="chart-subtitle">Variant performance across the 4 key user segments.</p>
+
+                    <div class="persona-grid">
+                        <div class="persona-card">
+                            <h4>Never Created (21%)</h4>
+                            <div class="mini-chart">
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 100%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 95%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 98%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 100%"></div>
+                                </div>
+                            </div>
+                            <span class="persona-result">No variance</span>
+                        </div>
+                        <div class="persona-card">
+                            <h4>Simple Mode Only (18%)</h4>
+                            <div class="mini-chart">
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 100%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 100%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 96%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 98%"></div>
+                                </div>
+                            </div>
+                            <span class="persona-result">No variance</span>
+                        </div>
+                        <div class="persona-card">
+                            <h4>Created, Never Listened (45%)</h4>
+                            <div class="mini-chart">
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 95%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 100%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 98%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 99%"></div>
+                                </div>
+                            </div>
+                            <span class="persona-result">No variance</span>
+                        </div>
+                        <div class="persona-card">
+                            <h4>Power Users (16%)</h4>
+                            <div class="mini-chart">
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 100%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 97%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 100%"></div>
+                                </div>
+                                <div class="mini-bar-group">
+                                    <div class="mini-bar" style="height: 95%"></div>
+                                </div>
+                            </div>
+                            <span class="persona-result">No variance</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Split Modules: Learnings & Action Points -->
+                <div class="split-grid">
+                    <div class="glass-card slide-up" style="animation-delay: 0.8s;">
+                        <div class="card-header">
+                            <div class="icon-wrapper indigo"><i data-feather="book-open"></i></div>
+                            <h2>Additional Learnings</h2>
+                        </div>
+                        <ul class="learning-list">
+                            <li><span class="highlight-text">Tone isn't the lever.</span> The words land the same way
+                                because the core message ("go create") is identical.</li>
+                            <li><span class="highlight-text">Complexity tax.</span> Running 8 versions that produce an
+                                identical result adds reporting overhead without benefit.</li>
+                            <li><span class="highlight-text">Opportunity cost.</span> Simplifying frees up engineering
+                                and creative bandwidth for experiments that actually move the needle.</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card slide-up" style="animation-delay: 0.9s;">
+                        <div class="card-header">
+                            <div class="icon-wrapper green-glow"><i data-feather="check-square"></i></div>
+                            <h2 class="text-green">Action Points</h2>
+                        </div>
+                        <ul class="action-list">
+                            <li>
+                                <div class="checkbox done"><i data-feather="check"></i></div>
+                                <span>Pick single variant as the sole Welcome Email.</span>
+                            </li>
+                            <li>
+                                <div class="checkbox done"><i data-feather="check"></i></div>
+                                <span>Stop splitting traffic across identical emails.</span>
+                            </li>
+                            <li class="active-action">
+                                <div class="checkbox pending"><i data-feather="arrow-right"></i></div>
+                                <span>Transition to Behavior-based messaging.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Next Tests Section -->
+                <section class="glass-card mt-auto slide-up" style="animation-delay: 1.0s;">
+                    <div class="card-header">
+                        <div class="icon-wrapper blue"><i data-feather="fast-forward"></i></div>
+                        <h2>Next Tests</h2>
+                    </div>
+
+                    <div class="test-card">
+                        <div class="test-header">
+                            <span class="test-badge">Proposed Test 1</span>
+                            <h3>Behavior-Based Welcome Series</h3>
+                        </div>
+                        <div class="test-body">
+                            <p><strong>Hypothesis:</strong> Varying the message based on actual behavior (e.g., Never
+                                created vs. Power users) will drive higher engagement than unified messaging.</p>
+                            <p><strong>Rationale:</strong> Each segment has a specific gap. Matching the email to their
+                                friction point addresses their needs directly.</p>
+                            <a href="#" class="inline-link group">
+                                View Test Proposal
+                                <i data-feather="arrow-right"
+                                    class="transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+
+        // Data for the different KPIs
+        const chartData = {
+            'clips': {
+                subtitle: 'When all bars look the same height, that IS the finding.',
+                yAxis: ['14', '8', '4', '0'],
+                bars: [
+                    { label: 'Control', value: '12.8', height: '91%' },
+                    { label: 'No Send', value: '12.8', height: '90%' },
+                    { label: 'Fully Pro', value: '12.9', height: '91%' },
+                    { label: 'Semi-Formal', value: '12.8', height: '92%' },
+                    { label: 'Social', value: '12.7', height: '90%' },
+                    { label: 'Neutral', value: '12.8', height: '91%' },
+                    { label: 'Informal', value: '12.8', height: '92%' },
+                    { label: 'Very Inf.', value: '12.7', height: '90%' }
+                ]
+            },
+            'subscriptions': {
+                subtitle: 'Semi-Formal slightly outperformed the rest with an 8% lift.',
+                yAxis: ['10%', '5%', '2%', '0%'],
+                bars: [
+                    { label: 'Control', value: '4.2%', height: '42%' },
+                    { label: 'No Send', value: '4.1%', height: '41%' },
+                    { label: 'Fully Pro', value: '4.5%', height: '45%' },
+                    { label: 'Semi-Formal', value: '5.6%', height: '56%' },
+                    { label: 'Social', value: '4.8%', height: '48%' },
+                    { label: 'Neutral', value: '4.3%', height: '43%' },
+                    { label: 'Informal', value: '3.9%', height: '39%' },
+                    { label: 'Very Inf.', value: '3.5%', height: '35%' }
+                ]
+            },
+            'engagement': {
+                subtitle: 'Social Content drove significantly higher click-through rates.',
+                yAxis: ['25%', '15%', '5%', '0%'],
+                bars: [
+                    { label: 'Control', value: '12%', height: '48%' },
+                    { label: 'No Send', value: '0%', height: '0%' }, // Can't click if no email
+                    { label: 'Fully Pro', value: '14%', height: '56%' },
+                    { label: 'Semi-Formal', value: '16%', height: '64%' },
+                    { label: 'Social', value: '23%', height: '92%' },
+                    { label: 'Neutral', value: '13%', height: '52%' },
+                    { label: 'Informal', value: '18%', height: '72%' },
+                    { label: 'Very Inf.', value: '15%', height: '60%' }
+                ]
+            }
+        };
+
+        const renderChart = (metric) => {
+            const data = chartData[metric];
+            if (!data) return;
+
+            // Update subtitle
+            document.getElementById('chart-subtitle-text').textContent = data.subtitle;
+
+            // Update Y Axis
+            const yAxisContainer = document.getElementById('y-axis-labels');
+            yAxisContainer.innerHTML = data.yAxis.map(val => `<span>${val}</span>`).join('');
+
+            // Update Bars
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach((bar, index) => {
+                const barData = data.bars[index];
+                if (barData) {
+                    // Temporarily set height to 0 for transition effect
+                    bar.style.height = '0%';
+                    bar.setAttribute('data-value', barData.value);
+
+                    setTimeout(() => {
+                        bar.style.height = barData.height;
+                    }, 50);
+                }
+            });
+        };
+
+        // Initialize tabs
+        const tabs = document.querySelectorAll('.kpi-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                tabs.forEach(t => t.classList.remove('active'));
+                e.target.classList.add('active');
+                renderChart(e.target.dataset.metric);
+            });
+        });
+
+        // Initial animation
+        setTimeout(() => {
+            renderChart('clips');
+        }, 800);
+    </script>
+</body>
+
+</html>

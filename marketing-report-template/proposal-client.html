@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Test Proposal | Neonblue</title>
+    <meta name="description" content="Neon Blue client test proposal template.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="proposal.css">
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body class="theme-beige">
+    <div class="container fade-in">
+        <!-- Header -->
+        <header class="proposal-header slide-up">
+            <div class="header-content">
+                <div class="badge-wrapper">
+                    <span class="badge">
+                        <span class="dot"></span>
+                        CLIENT TEST PROPOSAL
+                        <span class="dot"></span>
+                    </span>
+                </div>
+                <h1>Next Test Suggestion</h1>
+                <p class="subtitle">Complete the fields below to propose a new test.</p>
+            </div>
+            <div class="header-actions">
+                <a href="index.html" class="btn btn-secondary shadow-hover"><i data-feather="arrow-left"></i> Back to
+                    Report</a>
+                <button class="btn btn-primary pulse-hover"><i data-feather="save"></i> Save Proposal</button>
+            </div>
+        </header>
+
+        <!-- Main Form Wrapper -->
+        <div class="proposal-container">
+
+            <!-- Grid for Flow & Message Spec -->
+            <div class="proposal-grid">
+                <!-- Section 1: Flow Details -->
+                <section class="glass-card slide-up" style="animation-delay: 0.1s;">
+                    <div class="card-header">
+                        <div class="icon-wrapper navy"><i data-feather="git-merge"></i></div>
+                        <h2>1. Flow Details</h2>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label>Flow Name</label>
+                        <input type="text" class="form-input" placeholder="e.g., Behavior-Based Welcome Series">
+                    </div>
+                    <div class="form-group mb-6">
+                        <label>Canvas Link</label>
+                        <input type="url" class="form-input" placeholder="https://canvas.neonblue.app/...">
+                    </div>
+
+                    <h3 class="section-subheader">Triggers & Rules</h3>
+                    <div class="stacked-inputs mb-6">
+                        <div class="form-group mb-3">
+                            <label>Entry trigger</label>
+                            <input type="text" class="form-input" placeholder="Event / property / segment join">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Entry rules</label>
+                            <input type="text" class="form-input" placeholder="Eligibility, exclusions, cooldowns...">
+                        </div>
+                        <div class="form-group">
+                            <label>Exit rules</label>
+                            <input type="text" class="form-input" placeholder="What removes them">
+                        </div>
+                    </div>
+
+                    <h3 class="section-subheader">Flow Goals</h3>
+                    <div class="rules-grid">
+                        <div class="form-group">
+                            <label>Primary goal</label>
+                            <input type="text" class="form-input" placeholder="Primary objective">
+                        </div>
+                        <div class="form-group">
+                            <label>Secondary goals</label>
+                            <input type="text" class="form-input" placeholder="Secondary objectives">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Message Spec -->
+                <section class="glass-card slide-up" style="animation-delay: 0.2s;">
+                    <div class="card-header flex-between mb-4">
+                        <div class="flex items-center gap-14 list-none-margin">
+                            <div class="icon-wrapper blue"><i data-feather="mail"></i></div>
+                            <h2>2. Message Spec</h2>
+                        </div>
+                        <button class="btn-icon" title="Duplicate Message"><i data-feather="plus"></i> Add</button>
+                    </div>
+
+                    <div class="message-block">
+                        <div class="form-group mb-4">
+                            <label>Step / Message</label>
+                            <input type="text" class="form-input" placeholder="e.g., Email 2 / Push 1">
+                        </div>
+                        <div class="rules-grid mb-4">
+                            <div class="form-group">
+                                <label>Template</label>
+                                <input type="text" class="form-input" placeholder="Klaviyo/Braze template">
+                            </div>
+                            <div class="form-group">
+                                <label>Send Timing</label>
+                                <input type="text" class="form-input" placeholder="Relative delay">
+                            </div>
+                        </div>
+
+                        <h3 class="section-subheader">Success KPI</h3>
+                        <div class="rules-grid mb-4">
+                            <div class="form-group">
+                                <label>Primary KPI</label>
+                                <select class="form-select">
+                                    <option value="" disabled selected>Select KPI...</option>
+                                    <option>Clips per User</option>
+                                    <option>Conversion Rate</option>
+                                    <option>Click-Through Rate</option>
+                                    <option>Open Rate</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Secondary KPIs</label>
+                                <input type="text" class="form-input" placeholder="Other metrics">
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Guardrails</label>
+                            <input type="text" class="form-input" placeholder="Unsubscribe, churn, CS tickets...">
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Section 3: Core Strategy -->
+            <section class="glass-card full-width-card mt-6 slide-up" style="animation-delay: 0.3s;">
+                <div class="card-header">
+                    <div class="icon-wrapper purple"><i data-feather="target"></i></div>
+                    <h2>3. Testing Goals</h2>
+                </div>
+
+                <div class="rules-grid">
+                    <div class="form-group content-row">
+                        <label>Overall Test Direction</label>
+                        <textarea class="form-textarea"
+                            placeholder="What is the theme of this test? (e.g., Persona differentiation, feature-focus)"></textarea>
+                    </div>
+                    <div class="form-group content-row">
+                        <label>Test Hypothesis</label>
+                        <textarea class="form-textarea" placeholder="What exactly are we trying to test?"></textarea>
+                    </div>
+                    <div class="form-group content-row">
+                        <label>Hypothesis Reasons</label>
+                        <textarea class="form-textarea"
+                            placeholder="What in previous tests or performance informs this hypothesis?"></textarea>
+                    </div>
+                    <div class="form-group content-row">
+                        <label>Hypothesis Exclusion <span class="optional">(optional)</span></label>
+                        <textarea class="form-textarea"
+                            placeholder="What could be misinterpreted as the purpose of this test?"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid for Personalization & Capture -->
+            <div class="proposal-grid mt-6">
+                <!-- Section 4: Personalization Strategy -->
+                <section class="glass-card slide-up" style="animation-delay: 0.4s;">
+                    <div class="card-header">
+                        <div class="icon-wrapper green"><i data-feather="sliders"></i></div>
+                        <h2>4. Personalization Strategy</h2>
+                    </div>
+                    <p class="chart-subtitle mb-4">What variables are we isolating?</p>
+
+                    <div class="segment-block">
+                        <span class="segment-pill">Seg 1</span>
+                        <input type="text" class="form-input" placeholder="Segmentation 1">
+                    </div>
+                    <div class="segment-block">
+                        <span class="segment-pill">Seg 2</span>
+                        <input type="text" class="form-input" placeholder="Segmentation 2">
+                    </div>
+                    <div class="segment-block">
+                        <span class="segment-pill">Seg 3</span>
+                        <input type="text" class="form-input" placeholder="Segmentation 3">
+                    </div>
+                    <button class="add-text mt-2"><i data-feather="plus" class="small-icon"></i> Add
+                        segmentation</button>
+                </section>
+
+                <!-- Section 5: Future Capture -->
+                <section class="glass-card slide-up" style="animation-delay: 0.5s;">
+                    <div class="card-header">
+                        <div class="icon-wrapper blue-dark"><i data-feather="book"></i></div>
+                        <h2>5. Results & Learning Capture</h2>
+                    </div>
+
+                    <div class="result-section mb-6">
+                        <h4>Expected Learnings</h4>
+                        <div class="stacked-inputs">
+                            <input type="text" class="form-input mb-3" placeholder="Expected Learning 1">
+                            <input type="text" class="form-input mb-3" placeholder="Expected Learning 2">
+                            <input type="text" class="form-input" placeholder="Expected Learning 3">
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h4>Next Test Proposals</h4>
+                        <div class="stacked-inputs">
+                            <input type="text" class="form-input mb-3"
+                                placeholder="Proposal 1: Follow-up test based on learnings">
+                            <input type="text" class="form-input mb-3"
+                                placeholder="Proposal 2: Follow-up test based on learnings">
+                            <input type="text" class="form-input"
+                                placeholder="Proposal 3: Follow-up test based on learnings">
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Section 6: Creative Strategy -->
+            <section class="glass-card full-width-card mt-6 slide-up" style="animation-delay: 0.6s;">
+                <div class="card-header">
+                    <div class="icon-wrapper navy"><i data-feather="pen-tool"></i></div>
+                    <h2>6. Creative Strategy</h2>
+                </div>
+
+                <div class="rules-grid">
+                    <div class="form-group content-row">
+                        <label>Strategic Angle</label>
+                        <textarea class="form-textarea"
+                            placeholder="E.g. Problem/Solution, Education, Premium, Social proof, Founder story, Comparison, Objection handling, etc."></textarea>
+                    </div>
+                    <div class="form-group content-row">
+                        <label>Claims</label>
+                        <textarea class="form-textarea"
+                            placeholder="Specific product/brand elements we want to include"></textarea>
+                    </div>
+                    <div class="form-group content-row">
+                        <label>Proof Assets</label>
+                        <textarea class="form-textarea"
+                            placeholder="Stats, testimonials, certifications, screenshots, product GIF, etc."></textarea>
+                    </div>
+                    <div class="form-group content-row">
+                        <label>Message Structure</label>
+                        <textarea class="form-textarea"
+                            placeholder="Required messaging structure beyond the template"></textarea>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>
