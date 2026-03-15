@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Blue Academy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: var(--nb-cream);
+            color: var(--nb-navy);
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* ── Shell: sidebar + content ── */
+        .shell {
+            display: block;
+            min-height: 100vh;
+        }
+
+        /* ── Main content ── */
+        .content {
+            padding: 48px 40px 48px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px 0;
+            background: radial-gradient(circle at top, #1c366e, #0c1628);
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse 80% 60% at 65% 50%, rgba(26, 82, 240, 0.22) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 60%;
+            height: 60%;
+            background: rgba(59, 130, 246, 0.4);
+            border-radius: 50%;
+            filter: blur(140px);
+            mix-blend-mode: screen;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .page-header-glow-2 {
+            content: '';
+            position: absolute;
+            top: 40%;
+            right: -20%;
+            width: 50%;
+            height: 70%;
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            filter: blur(160px);
+            mix-blend-mode: screen;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .page-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 99px;
+            padding: 7px 18px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.55);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent);
+            backdrop-filter: blur(12px);
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: var(--nb-cream);
+            margin: 0 0 20px;
+            line-height: 1.08;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 2vw, 1.175rem);
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin: 0 auto 40px;
+            max-width: 560px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-header-books {
+            font-size: 1.6rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+            position: relative;
+            opacity: 0.9;
+        }
+
+        /* ── Module block ── */
+        .module-block {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 2px solid var(--nb-border);
+        }
+
+        .module-block:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+                /* Cleaned up module headers in HTML style attributes */
+
+        .module-num-label {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--nb-blue);
+            white-space: nowrap;
+        }
+
+        .module-block-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--nb-blue);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        /* ── Reading time ── */
+        .reading-time {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--nb-gray);
+            letter-spacing: 0.02em;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        /* ── Section ── */
+        .mod-section {
+            padding: 20px 0;
+            border-top: 1px solid rgba(229, 231, 235, 0.7);
+            position: relative;
+        }
+
+        /* ── Section header (non-sticky) ── */
+        .sticky-section-label {
+            position: static;
+            padding: 0;
+            margin: 0 0 10px;
+        }
+
+        .sec-label {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--nb-gray-2);
+            margin-right: 8px;
+        }
+
+        .mod-section h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--nb-navy);
+            margin: 0;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            display: inline;
+        }
+
+        .mod-section p {
+            font-size: 0.95rem;
+            color: var(--nb-gray);
+            line-height: 1.85;
+            margin: 0 0 16px;
+            max-width: 680px;
+        }
+
+        .mod-section p:last-child {
+            margin-bottom: 0;
+        }
+
+
+
+        /* ── Compact list ── */
+        .c-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .c-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 12px 14px;
+            background: transparent;
+            border: 1px solid var(--nb-border);
+            border-radius: 9px;
+        }
+
+        .c-dot {
+            flex-shrink: 0;
+            margin-top: 7px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-blue);
+            opacity: 0.35;
+        }
+
+        .c-item p {
+            font-size: 0.875rem;
+            color: var(--nb-gray);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .c-item strong {
+            color: var(--nb-navy);
+            font-weight: 600;
+        }
+
+        /* ── Pill row ── */
+        .pill-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        @media (max-width: 700px) {
+            .pill-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pill-card {
+            padding: 16px 18px;
+            background: transparent;
+            border: 1px solid var(--nb-border);
+            border-radius: 10px;
+        }
+
+        .pill-card h4 {
+            font-size: 0.825rem;
+            font-weight: 700;
+            color: var(--nb-navy);
+            margin: 0 0 5px;
+        }
+
+        .pill-card p {
+            font-size: 0.8rem;
+            color: var(--nb-gray);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* ── Numbered list ── */
+        .n-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .n-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px 14px;
+            background: transparent;
+            border: 1px solid var(--nb-border);
+            border-radius: 9px;
+        }
+
+        .n-circle {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--nb-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .n-item h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--nb-navy);
+            margin: 0 0 2px;
+        }
+
+        .n-item p {
+            font-size: 0.825rem;
+            color: var(--nb-gray);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* ── Hypothesis row ── */
+        .hyp-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        @media (max-width: 700px) {
+            .hyp-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hyp-card {
+            padding: 16px 18px;
+            background: transparent;
+            border: 1px solid var(--nb-border);
+            border-radius: 10px;
+        }
+
+        .hyp-n {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: rgba(26, 82, 240, 0.15);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .hyp-card h4 {
+            font-size: 0.825rem;
+            font-weight: 700;
+            color: var(--nb-navy);
+            margin: 0 0 4px;
+        }
+
+        .hyp-card p {
+            font-size: 0.8rem;
+            color: var(--nb-gray);
+            line-height: 1.65;
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* ── Pitfall grid ── */
+        .pitfall-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        @media (max-width: 540px) {
+            .pitfall-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pitfall-cell {
+            padding: 14px 16px;
+            background: #FEF2F2;
+            border: 1px solid rgba(239, 68, 68, 0.12);
+            border-radius: 9px;
+        }
+
+        .pitfall-cell h4 {
+            font-size: 0.825rem;
+            font-weight: 700;
+            color: #991B1B;
+            margin: 0 0 3px;
+        }
+
+        .pitfall-cell p {
+            font-size: 0.8rem;
+            color: rgba(127, 29, 29, 0.75);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Takeaway ── */
+        .takeaway {
+            margin-top: 14px;
+            padding: 14px 18px;
+            background: rgba(26, 82, 240, 0.05);
+            border: 1px solid rgba(26, 82, 240, 0.15);
+            border-left: 3px solid var(--nb-blue);
+            border-radius: 9px;
+        }
+
+        .tk-lbl {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--nb-blue);
+            margin-bottom: 4px;
+        }
+
+        .takeaway p {
+            font-size: 0.875rem;
+            color: var(--nb-navy-2);
+            line-height: 1.7;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* ── Video placeholder ── */
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #f0f1f4;
+            border: 1.5px dashed #c8ccd6;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #9aa0b0;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+            align-self: start;
+            position: sticky;
+            top: 72px;
+        }
+
+        .video-placeholder:hover {
+            background: #e8eaf0;
+            border-color: #b0b5c4;
+        }
+
+        .video-placeholder-icon {
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-placeholder-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #9aa0b0;
+            margin-left: 2px;
+        }
+
+        .video-placeholder span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        /* ── Closing ── */
+        .closing {
+            margin-top: 16px;
+            padding: 22px 26px;
+            background: var(--nb-navy);
+            border-radius: 12px;
+        }
+
+        .closing p {
+            font-size: 0.9rem;
+            color: rgba(242, 237, 224, 0.8);
+            line-height: 1.75;
+            font-style: italic;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* ── Footer ── */
+        .page-footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--nb-border);
+            padding: 28px 60px;
+            text-align: center;
+        }
+
+        .page-footer p {
+            font-size: 0.825rem;
+            color: var(--nb-gray-2);
+            margin: 0 0 6px;
+            line-height: 1.6;
+        }
+
+        .page-footer strong {
+            color: var(--nb-navy);
+        }
+
+        .page-footer a {
+            color: var(--nb-blue);
+            text-decoration: none;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 800px) {
+            .content {
+                padding: 32px 20px 48px;
+            }
+        }
+
+        /* ── Back to top ── */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--nb-navy);
+            color: var(--nb-cream);
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.25s, transform 0.25s;
+            pointer-events: none;
+            z-index: 80;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background: var(--nb-blue);
+        }
+
+        /* ── Print ── */
+        @media print {
+
+            .top-bar,
+            .back-to-top,
+            .section-toggle {
+                display: none !important;
+            }
+
+            .content {
+                padding: 20px !important;
+                max-width: 100% !important;
+            }
+
+            .page-footer {
+                margin-top: 40px;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .overview-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .page-header .overview-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px; }
+            .page-header .overview-card { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        }
+        @media (max-width: 600px) {
+            .page-header .overview-grid { grid-template-columns: 1fr !important; }
+        }
+
+        /* ── Hero overview ── */
+        .ov-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.06); overflow: hidden; }
+        .ov-col { padding: 24px 20px; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; }
+        .ov-col:last-child { border-right: none; }
+        .ov-mod { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.38); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 6px; }
+        .ov-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; color: white; margin: 0 0 14px; }
+        .ov-item { display: flex; align-items: baseline; gap: 8px; padding: 7px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+        .ov-num { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.28); letter-spacing: 0.06em; flex-shrink: 0; min-width: 20px; }
+        .ov-label { font-size: 0.875rem; color: rgba(255,255,255,0.58); line-height: 1.35; }
+        .ov-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 18px; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.4); text-decoration: none; letter-spacing: 0.04em; transition: color 0.15s; }
+        .ov-cta:hover { color: white; }
+        .ov-cta::after { content: '→'; transition: transform 0.15s; }
+        .ov-cta:hover::after { transform: translateX(3px); }
+
+        /* ── Module header ── */
+        .mod-header { position: relative; margin: 0 0 32px; padding: 40px 0 0; border-top: 1px solid var(--nb-border); }
+        .mod-eyebrow { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; }
+        .mod-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nb-blue); }
+        .mod-rule { width: 24px; height: 1px; background: rgba(12,22,40,0.12); flex-shrink: 0; align-self: center; }
+        .mod-read { font-size: 11px; font-weight: 600; color: rgba(12,22,40,0.38); text-transform: uppercase; letter-spacing: 0.05em; }
+        .mod-header h2 { font-size: 2.4rem; font-weight: 600; letter-spacing: -0.03em; color: var(--nb-navy); margin: 0 0 14px; line-height: 1.08; }
+        .mod-header > p { font-size: 1.05rem; color: var(--nb-gray); margin: 0; line-height: 1.6; max-width: 680px; }
+
+        /* ── Section label ── */
+        .sec-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+        .sec-num { font-size: 0.875rem; font-weight: 700; color: var(--nb-gray-2); flex-shrink: 0; min-width: 28px; }
+
+        </style>
+</head>
+
+<body>
+
+    <!-- Module Progress Nav (slides in after hero) -->
+    <div id="moduleNav" style="position: fixed; top: 3px; left: 0; right: 0; z-index: 1000; background: rgba(12,22,40,0.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.07); transform: translateY(-100%); transition: transform 0.3s ease;">
+        <div style="max-width: 860px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 0; height: 48px;">
+            <div style="font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.18em; margin-right: 20px; white-space: nowrap; flex-shrink: 0;">Academy</div>
+            <div style="height: 14px; width: 1px; background: rgba(255,255,255,0.1); margin-right: 16px; flex-shrink: 0;"></div>
+            <div style="display: flex; gap: 2px; flex-grow: 1;">
+                <a href="#module-1" class="mod-nav-pill" data-module="1" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 5px 10px; border-radius: 5px; text-decoration: none; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.45); transition: all 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">M1: Creative Testing</a>
+                <a href="#module-2" class="mod-nav-pill" data-module="2" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 5px 10px; border-radius: 5px; text-decoration: none; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.45); transition: all 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">M2: Getting Started</a>
+                <a href="#module-3" class="mod-nav-pill" data-module="3" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 5px 10px; border-radius: 5px; text-decoration: none; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.45); transition: all 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">M3: Experiments</a>
+                <a href="#module-4" class="mod-nav-pill" data-module="4" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 5px 10px; border-radius: 5px; text-decoration: none; font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.45); transition: all 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">M4: Creative Variants</a>
+            </div>
+        </div>
+    </div>
+    <style>
+        .mod-nav-pill.active { color: white !important; background: rgba(26,82,240,0.3) !important; }
+        .mod-nav-pill:hover { color: white !important; background: rgba(255,255,255,0.08) !important; }
+    </style>
+
+    <div class="page-header">
+        <div class="page-eyebrow" style="color: rgba(255,255,255,0.7); margin-bottom: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">4 Modules · ~20 min read</div>
+        <h1>Neon Blue Academy</h1>
+        <p>Learn how Neon Blue helps you design, launch, and learn from creative experiments across your marketing channels.</p>
+
+
+        <!-- Curriculum overview — visual transition into content -->
+        <div class="page-header-glow-2"></div>
+        <div class="academy-overview" style="margin-top: 36px; width: 100%; position: relative; z-index: 10;">
+            <div class="ov-grid">
+
+                    <div class="ov-col">
+                        <div class="ov-mod">Module 1</div>
+                        <h3 class="ov-title">Creative Testing</h3>
+                        <div class="ov-item"><span class="ov-num">1.1</span><span class="ov-label">Why It Matters</span></div>
+                        <div class="ov-item"><span class="ov-num">1.2</span><span class="ov-label">Why It's Been Capped</span></div>
+                        <div class="ov-item"><span class="ov-num">1.3</span><span class="ov-label">How Neon Blue Helps</span></div>
+                        <div class="ov-item"><span class="ov-num">1.4</span><span class="ov-label">How Roles Change</span></div>
+                        <a href="#module-1" class="ov-cta">Start module</a>
+                    </div>
+
+                    <div class="ov-col">
+                        <div class="ov-mod">Module 2</div>
+                        <h3 class="ov-title">Getting Started</h3>
+                        <div class="ov-item"><span class="ov-num">2.1</span><span class="ov-label">Connecting Your Data</span></div>
+                        <div class="ov-item"><span class="ov-num">2.2</span><span class="ov-label">Launching Your First Test</span></div>
+                        <div class="ov-item"><span class="ov-num">2.3</span><span class="ov-label">Test Results &amp; Next Steps</span></div>
+                        <a href="#module-2" class="ov-cta">Start module</a>
+                    </div>
+
+                    <div class="ov-col">
+                        <div class="ov-mod">Module 3</div>
+                        <h3 class="ov-title">Experiments</h3>
+                        <div class="ov-item"><span class="ov-num">3.1</span><span class="ov-label">Test Steps</span></div>
+                        <div class="ov-item"><span class="ov-num">3.2</span><span class="ov-label">Hypothesis</span></div>
+                        <div class="ov-item"><span class="ov-num">3.3</span><span class="ov-label">Test Proposal</span></div>
+                        <div class="ov-item"><span class="ov-num">3.4</span><span class="ov-label">Creative Generation</span></div>
+                        <div class="ov-item"><span class="ov-num">3.5</span><span class="ov-label">Launch</span></div>
+                        <div class="ov-item"><span class="ov-num">3.6</span><span class="ov-label">Results &amp; Next Steps</span></div>
+                        <a href="#module-3" class="ov-cta">Start module</a>
+                    </div>
+
+                    <div class="ov-col">
+                        <div class="ov-mod">Module 4</div>
+                        <h3 class="ov-title">Creative Variants</h3>
+                        <div class="ov-item"><span class="ov-num">4.1</span><span class="ov-label">What Makes a Great Variant</span></div>
+                        <div class="ov-item"><span class="ov-num">4.2</span><span class="ov-label">Variant Examples</span></div>
+                        <div class="ov-item"><span class="ov-num">4.3</span><span class="ov-label">Common Pitfalls</span></div>
+                        <div class="ov-item"><span class="ov-num">4.4</span><span class="ov-label">Variants to Learnings</span></div>
+                        <a href="#module-4" class="ov-cta">Start module</a>
+                    </div>
+
+            </div><!-- /overview-grid -->
+        </div><!-- /academy-overview -->
+    </div><!-- /page-header -->
+
+    <div class="shell">
+        <main class="content">
+
+
+
+
+
+            <!-- ══ MODULE 1 ══ -->
+            <div class="module-block" id="module-1">
+                <div class="mod-header">
+                    <div class="mod-eyebrow">
+                        <span class="mod-label">Module 01</span>
+                        <span class="mod-rule"></span>
+                        <span class="mod-read">4 min read</span>
+                    </div>
+                    <h2>Creative Testing with Neon Blue</h2>
+                    <p>
+                        Understand why continuous creative testing remains the highest-leverage growth activity in a crowded channel landscape — and how AI changes the speed at which you can learn.
+                    </p>
+                </div>
+
+                <div class="mod-section" id="s-1-1">
+                    <div class="sec-header"><span class="sec-num">1.1</span><h3>Why Creative Testing Matters</h3></div>
+                    <div class="section-body">
+                        <p>Every channel you operate in, whether that is email, push, ads or owned experiences is crowded. Users today are overwhelmed with messages from brands competing for their attention, and they have more alternatives than ever. Generic messaging gets ignored. Truly differentiating how you talk to your users and speaking to their problems and desires isn't a nice-to-have, it's non-negotiable.</p>
+                        <p>The only reliable way to know what actually speaks to your users is through rigorous and continuous testing. What you think will work often doesn't. What works for one segment won't work for another. The more you test, the more you learn. The more you learn, the sharper your messaging gets. Across every customer touchpoint.</p>
+
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-1-2">
+                    <div class="sec-header"><span class="sec-num">1.2</span><h3>Why Creative Testing Has Been Capped</h3></div>
+                    <div class="section-body">
+                        <p>Creative testing isn't just one task — it's a chain of steps, each owned by different people,
+                            using different tools, on different timelines.</p>
+                        <p><strong>Generating and validating creative takes weeks.</strong> A single email variant
+                            involves
+                            a copywriter, a designer, and often a brand or legal reviewer. According to Litmus, most
+                            marketing teams historically needed two or more weeks to produce a single email — from brief
+                            to
+                            copy to design to QA to approval. Push notifications are faster to produce but still pass
+                            through the same approval chain. Ad creative adds another layer: platform-specific formats,
+                            compliance review, and often agency coordination. Landing pages bring in product,
+                            engineering,
+                            or web teams. For each variant you want to test, multiply that workflow. Testing six
+                            variants
+                            instead of two doesn't take three times as long — but it's close.</p>
+                        <p><strong>Analyzing results takes dedicated expertise and patience.</strong> Tests need to run
+                            long
+                            enough to reach statistical significance — typically two to four weeks depending on traffic
+                            volume. Then someone needs to pull the data, normalize across metrics, interpret what
+                            actually
+                            happened, and package it in a way that non-technical stakeholders can act on. Most teams
+                            don't
+                            have a dedicated analyst for this. It falls to whoever has bandwidth, which means it often
+                            doesn't happen rigorously — or at all.</p>
+                        <p><strong>Feeding learnings back into production is where most programs break down
+                                entirely.</strong> A test result is only valuable if it changes what you do next. That
+                            means
+                            updating templates, briefing the creative team, adjusting strategy, and documenting what was
+                            learned. In practice, results sit in a slide deck that gets reviewed once and forgotten. The
+                            next campaign starts from scratch instead of building on what you already know.</p>
+                        <p>Now multiply all of that across channels. Email, push, ads, landing pages — each with its own
+                            platform, its own team, its own approval workflow. Running a structured testing program in
+                            one
+                            channel is hard. Running it across four simultaneously, with learnings flowing between them,
+                            is
+                            a full-time operation. Most marketing teams simply aren't staffed for it.</p>
+
+
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-1-3">
+                    <div class="sec-header"><span class="sec-num">1.3</span><h3>How Neon Blue Unlocks Creative Testing</h3></div>
+                    <div class="section-body">
+                        <p>Neon Blue addresses each of these bottlenecks directly.</p>
+                        <p><strong>Creative generation goes from weeks to hours.</strong> Neon Blue uses AI to generate
+                            on-brand creative variants — copy, messaging angles, visual direction — at a pace that
+                            manual
+                            production can't match. Instead of a brief passing through copywriters, designers, and
+                            reviewers
+                            over two weeks to produce two variants, Neon Blue can generate dozens of variants from a
+                            single
+                            creative brief, each aligned to your brand voice and grounded in your product. Your team
+                            reviews
+                            and approves rather than builds from scratch.</p>
+                        <p><strong>Analysis is built into the process, not bolted on after.</strong> Every experiment at
+                            Neon Blue follows a structured cycle: data science analyzes the previous round's results,
+                            identifies responsivity patterns across user segments, and produces the hypothesis and
+                            creative
+                            brief for the next round. Analysis isn't something that happens if someone has bandwidth —
+                            it's
+                            the engine that drives what gets tested next.</p>
+                        <p><strong>Learnings compound automatically.</strong> Neon Blue doesn't just report what won.
+                            Each
+                            experiment feeds data back into the system — which messages resonate with which users, which
+                            creative angles drive action for which segments. Over time, the platform builds a deeper
+                            understanding of your audience that makes every subsequent experiment smarter. Instead of
+                            starting from scratch each quarter, you're building on everything you've already learned.
+                        </p>
+                        <p><strong>One system orchestrates across channels.</strong> Neon Blue sits inside your existing
+                            infrastructure — Braze, Klaviyo, ad platforms, your website — and handles variant assignment
+                            and
+                            delivery across all of them. A single experiment can span email, push, on-site experiences,
+                            and
+                            ads without requiring separate workflows, separate teams, or separate analysis. Insights
+                            from
+                            one channel feed directly into experiments in another.</p>
+
+
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-1-4">
+                    <div class="sec-header"><span class="sec-num">1.4</span><h3>How Roles Change</h3></div>
+                    <div class="section-body">
+                        <p>Working with Neon Blue, your team spends less time coordinating and more time deciding.</p>
+                        <p><strong>Less of:</strong> Back-and-forth with creative agencies. Chasing deliverables across
+                            channels. Sitting in dashboards trying to piece together what worked. Writing briefs,
+                            waiting
+                            for drafts, giving feedback, waiting again.</p>
+                        <p><strong>More of:</strong> Reviewing experiment results that are already analyzed. Choosing
+                            which
+                            creative directions to double down on. Applying what you know about your users and your
+                            brand to
+                            shape what gets tested next. Using cross-channel learnings — not gut feel — to guide
+                            strategy.
+                        </p>
+                        <p>Neon Blue operates as one team across email, push, ads, and landing pages. Learnings flow
+                            between
+                            channels automatically. Your role shifts from managing the process to steering it.</p>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ MODULE 2 ══ -->
+            <div class="module-block" id="module-2">
+                <div class="mod-header">
+                    <div class="mod-eyebrow">
+                        <span class="mod-label">Module 02</span>
+                        <span class="mod-rule"></span>
+                        <span class="mod-read">3 min read</span>
+                    </div>
+                    <h2>Get Started with Neon Blue</h2>
+                    <p>
+                        The tactical guide to connecting your data, launching your first test, and turning on the continuous testing engine across your channels.
+                    </p>
+                </div>
+
+                <div class="mod-section" id="s-2-1">
+                    <div class="sec-header"><span class="sec-num">2.1</span><h3>Connecting Your Data</h3></div>
+                    <div class="section-body">
+                        <p>Neon Blue learns through testing — not through pre-built segments or asset libraries. We need
+                            your customer data and your existing creative, but the bar to get started is deliberately
+                            low.
+                        </p>
+                        <p><strong>Data: start with what you have.</strong> The base requirement is a connection to your
+                            ecommerce platform and your messaging platform — a one-click Shopify app install and a
+                            single
+                            Klaviyo API key. Setup takes about 15 minutes. That gives us user IDs, transaction history,
+                            product catalog, page view analytics, and email engagement — enough to launch experiments,
+                            learn, and deliver measurable lift. Over time, you can layer in behavioral analytics
+                            (Amplitude), attribution data, or a direct data warehouse connection (Snowflake) for richer
+                            signal. But none of that is required to get started.</p>
+                        <p><strong>Creative: we work with what's already there.</strong> No photoshoots, no new asset
+                            production. At the base level, we pull your product images and copy directly from your site
+                            and
+                            pair them with different messaging angles to generate dozens of testable variants from your
+                            existing catalog. If you want to go further, we can index your historical campaign assets,
+                            lifestyle photography, social content, and ad creative — but the base is where every
+                            successful
+                            pilot we've run has started.</p>
+                        <p><strong>Platform integration.</strong> Neon Blue sits inside your existing CRM — Braze,
+                            Klaviyo,
+                            or Iterable — and handles variant assignment and content delivery while your platform
+                            handles
+                            routing and sending. For on-site experiments, a lightweight JavaScript SDK connects to your
+                            website. Nothing gets replaced.</p>
+                        <p><strong>Channel audit and tracking.</strong> We map your current marketing touchpoints —
+                            lifecycle flows, push sequences, ad campaigns, key landing pages — and identify where
+                            testing
+                            will have the highest impact. We set up a shared tracking sheet as the single source of
+                            truth:
+                            what's running, what's planned, what we've learned.</p>
+
+
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-2-2">
+                    <div class="sec-header"><span class="sec-num">2.2</span><h3>Launching Your First Test</h3></div>
+                    <div class="section-body">
+                        <p>Once setup is complete, here's how a test goes from idea to live:</p>
+                        <p><strong>We propose the experiment.</strong> Based on our audit and your priorities, we
+                            present a
+                            test proposal: hypothesis, target flow, variant concepts, and expected timeline.</p>
+                        <p><strong>You review and approve.</strong> You review the proposal, give feedback on creative
+                            direction, and approve the test. This is your checkpoint to ensure everything aligns with
+                            brand
+                            and strategy.</p>
+                        <p><strong>We build and launch.</strong> We create the variants, set up the experiment in the
+                            relevant platform, configure audience splits, and launch. End-to-end technical
+                            implementation.
+                        </p>
+                        <p><strong>We monitor.</strong> Once live, we monitor for delivery issues, anomalies, and early
+                            signals. You don't need to babysit the test.</p>
+
+
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-2-3">
+                    <div class="sec-header"><span class="sec-num">2.3</span><h3>Test Results and Next Steps</h3></div>
+                    <div class="section-body">
+                        <p>Every test is followed up with results, key learnings, and next steps. These are provided in
+                            a clear, user-friendly report once the test reaches statistical significance — which we aim
+                            to achieve within two weeks.</p>
+                        <p>Here’s what you’ll find in your test results:</p>
+                        <p><strong>Main Results Summary.</strong> What was the hypothesis? Was it confirmed or denied?
+                            And the headline KPI results — the quick read on what happened.</p>
+                        <p><strong>Performance Analysis.</strong> Performance by variant. Performance by segment. And
+                            any other segmentation that was made during the test — product, SKU, tone, angle, behavior,
+                            or whatever dimensions the experiment was designed around.</p>
+                        <p><strong>Insights.</strong> The most valuable part. Top learnings that came out of the test —
+                            this includes the hypothesis but is not limited to it. Our engine uncovers insights that
+                            weren’t necessarily planned for in the test setup. For each learning, you’ll see:</p>
+                        <ul
+                            style="font-size: 0.9rem; color: var(--nb-gray); line-height: 1.85; margin: 0 0 16px; padding-left: 24px;">
+                            <li>A summary of the learning</li>
+                            <li>A graph representing the data that proves it</li>
+                            <li>The next action required</li>
+                            <li>Potential next steps to dig deeper into that learning</li>
+                        </ul>
+                        <p><strong>Executive Summary.</strong> A single view with the key learnings, action points, and
+                            next steps. Everything you need to share with your team or leadership — nothing you don’t.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ MODULE 3 ══ -->
+            <div class="module-block" id="module-3">
+                <div class="mod-header">
+                    <div class="mod-eyebrow">
+                        <span class="mod-label">Module 03</span>
+                        <span class="mod-rule"></span>
+                        <span class="mod-read">7 min read</span>
+                    </div>
+                    <h2>Experiments Deep Dive</h2>
+                    <p>
+                        The full lifecycle of a Neon Blue experiment — from crafting a structured hypothesis to analyzing the final statistical results and compounding learnings.
+                    </p>
+                </div>
+
+                <!-- Experiment lifecycle diagram at the top -->
+                <div class="experiment-illustration" style="margin: 0 0 40px; padding: 40px 32px; background: linear-gradient(135deg, #0c1628 0%, #1c366e 100%); border-radius: 16px; overflow: hidden; position: relative;">
+                    <div style="position:absolute;top:-30%;left:-10%;width:50%;height:60%;background:rgba(59,130,246,0.2);border-radius:50%;filter:blur(80px);pointer-events:none;"></div>
+                    <div style="position:absolute;bottom:-20%;right:-10%;width:40%;height:50%;background:rgba(99,102,241,0.15);border-radius:50%;filter:blur(80px);pointer-events:none;"></div>
+                    <div style="position:relative;z-index:2;">
+                        <div style="text-align:center;margin-bottom:32px;">
+                            <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.45);margin-bottom:8px;">How every experiment works</div>
+                            <h3 style="font-size:1.2rem;font-weight:700;color:white;margin:0;letter-spacing:-0.02em;">The Experiment Lifecycle</h3>
+                        </div>
+                        <div style="display:flex;justify-content:center;align-items:flex-start;gap:0;max-width:840px;margin:0 auto;">
+                            <div class="exp-step" style="flex:1;text-align:center;padding:0 8px;">
+                                <div class="exp-icon" style="width:52px;height:52px;margin:0 auto 12px;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                </div>
+                                <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">3.2</div>
+                                <div style="font-size:0.85rem;font-weight:700;color:white;margin-bottom:3px;">Hypothesis</div>
+                                <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.4;">Define what you're testing and why</div>
+                            </div>
+                            <div style="color:rgba(255,255,255,0.18);font-size:1.2rem;padding-top:18px;flex-shrink:0;">›</div>
+                            <div class="exp-step" style="flex:1;text-align:center;padding:0 8px;">
+                                <div class="exp-icon" style="width:52px;height:52px;margin:0 auto 12px;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </div>
+                                <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">3.3</div>
+                                <div style="font-size:0.85rem;font-weight:700;color:white;margin-bottom:3px;">Test Proposal</div>
+                                <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.4;">Blueprint the experiment plan</div>
+                            </div>
+                            <div style="color:rgba(255,255,255,0.18);font-size:1.2rem;padding-top:18px;flex-shrink:0;">›</div>
+                            <div class="exp-step" style="flex:1;text-align:center;padding:0 8px;">
+                                <div class="exp-icon" style="width:52px;height:52px;margin:0 auto 12px;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                                <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">3.4</div>
+                                <div style="font-size:0.85rem;font-weight:700;color:white;margin-bottom:3px;">Creative</div>
+                                <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.4;">Generate &amp; review variants</div>
+                            </div>
+                            <div style="color:rgba(255,255,255,0.18);font-size:1.2rem;padding-top:18px;flex-shrink:0;">›</div>
+                            <div class="exp-step" style="flex:1;text-align:center;padding:0 8px;">
+                                <div class="exp-icon" style="width:52px;height:52px;margin:0 auto 12px;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                </div>
+                                <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">3.5</div>
+                                <div style="font-size:0.85rem;font-weight:700;color:white;margin-bottom:3px;">Launch</div>
+                                <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.4;">QA, configure, go live</div>
+                            </div>
+                            <div style="color:rgba(255,255,255,0.18);font-size:1.2rem;padding-top:18px;flex-shrink:0;">›</div>
+                            <div class="exp-step" style="flex:1;text-align:center;padding:0 8px;">
+                                <div class="exp-icon" style="width:52px;height:52px;margin:0 auto 12px;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                                </div>
+                                <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">3.6</div>
+                                <div style="font-size:0.85rem;font-weight:700;color:white;margin-bottom:3px;">Results</div>
+                                <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.4;">Measure, learn, iterate</div>
+                            </div>
+                        </div>
+                        <div style="text-align:center;margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);">
+                            <p style="font-size:0.8rem;color:rgba(255,255,255,0.38);margin:0;">↻ &nbsp;This cycle repeats. Each test builds on the last.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-3-1">
+                    <div class="sec-header"><span class="sec-num">3.1</span><h3>Test Steps</h3></div>
+                    <div class="section-body">
+                        <p>Every experiment on Neon Blue follows the same five-step process:</p>
+                        <ul
+                            style="font-size: 0.9rem; color: var(--nb-gray); line-height: 1.65; margin: 0 0 16px; padding-left: 24px;">
+                            <li><strong>Hypothesis:</strong> Define what you are testing and why you expect it to work.
+                            </li>
+                            <li><strong>Test Proposal:</strong> Translate the hypothesis into a concrete experiment plan
+                                with defined variables, audience, metrics, and timeline.</li>
+                            <li><strong>Creative Generation & Review:</strong> Generate the creative variants and review
+                                them together before anything goes live.</li>
+                            <li><strong>Launch:</strong> Build the experiment in your platform, QA everything, and go
+                                live.</li>
+                            <li><strong>Results & Next Steps:</strong> Analyze what happened, extract learnings, and
+                                define what comes next.</li>
+                        </ul>
+                        <p>This cycle repeats. Each test builds on the last as learnings from one test feed the
+                            hypothesis for the next. The sections below walk through each step in detail.</p>
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-3-2">
+                    <div class="sec-header"><span class="sec-num">3.2</span><h3>Hypothesis</h3></div>
+                    <div class="section-body">
+                        <p>Every experiment starts with a hypothesis. A hypothesis is a structured, testable statement
+                            about what we expect to happen and why.</p>
+                        <p>A good hypothesis has three parts:</p>
+                        <p><strong>Observation:</strong> What we’ve noticed in the data or the current creative.
+                            Examples: “The welcome email has a 15% open rate, well below benchmark”, “The retargeting ad
+                            has high impressions but almost no clicks.”</p>
+                        <p><strong>Theory:</strong> Why we think this is happening. “The subject line is generic and
+                            doesn’t give users a reason to open.” “The ad creative doesn’t match where the user is in
+                            their journey.”</p>
+                        <p><strong>Prediction:</strong> What we expect to change if we’re right. “A subject line that
+                            leads with the product’s core benefit will increase open rates by 5+ percentage points for
+                            these 3 user segments.”, “Benefit-focused ad copy tailored to the user’s last action will
+                            improve CTR by 15%+.”</p>
+                        <p>Hypotheses force us to be specific before we see results. This prevents post-hoc
+                            rationalization and ensures every test produces a real learning in line with overall
+                            strategy. This makes the test as useful as possible, even when the hypothesis invalidated.
+                        </p>
+                        <p>Hypotheses can come from your own knowledge and creativity or from Neon Blue’s AI analysing
+                            previous tests and performance.</p>
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-3-3">
+                    <div class="sec-header"><span class="sec-num">3.3</span><h3>Test Proposal</h3></div>
+                    <div class="section-body">
+                        <p>The test proposal is the blueprint for an experiment. It translates the hypothesis into a
+                            concrete plan that allows you to:</p>
+                        <ul
+                            style="font-size: 0.9rem; color: var(--nb-gray); line-height: 1.65; margin: 0 0 16px; padding-left: 24px;">
+                            <li>structure and visualize how the hypothesis will be tested</li>
+                            <li>understand what the test is designed to learn and what the logical next tests could be
+                            </li>
+                            <li>keep track of what has been tested and why</li>
+                        </ul>
+                        <p>A test proposal includes:</p>
+                        <ul
+                            style="font-size: 0.9rem; color: var(--nb-gray); line-height: 1.65; margin: 0 0 16px; padding-left: 24px;">
+                            <li><strong>Hypothesis:</strong> the statement defined in Section 3.2</li>
+                            <li><strong>Channel and touchpoint:</strong> the channel being tested — email, push, ads, or
+                                landing page — and the specific flow, message, campaign, or page involved</li>
+                            <li><strong>Variables being tested:</strong> the specific elements being isolated, such as
+                                user segment, angle, tone, copy, layout, timing, visual creative, page structure, or
+                                metadata</li>
+                            <li><strong>Variant concepts:</strong> what each version is designed to communicate and how
+                                the variants differ from one another</li>
+                            <li><strong>Audience and split:</strong> who sees the test and how traffic is divided across
+                                variants</li>
+                            <li><strong>Success metrics:</strong> the primary metric (for example, click-through rate)
+                                and secondary metrics (for example, conversion rate or unsubscribe rate)</li>
+                        </ul>
+                        <p>This step comes before creative generation to ensure that every asset produced contributes to
+                            validating or invalidating the hypothesis.</p>
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-3-4">
+                    <div class="sec-header"><span class="sec-num">3.4</span><h3>Creative Generation & Review</h3></div>
+                    <div class="section-body">
+                        <p>Once the test has been defined in sufficient detail, creative generation can begin.</p>
+                        <p>Creative generation is split into two parts: <strong>variants</strong> and
+                            <strong>generations</strong>.</p>
+                        <p>A variant represents a distinct branch of the test. It captures a specific direction within
+                            the hypothesis being tested. A generation is a specific creative execution within that
+                            variant.</p>
+                        <p>If the hypothesis is narrow, you may only need a single variant. For example, if you are
+                            testing simple copy personalization by persona, you might have one variant with one
+                            generation per persona.</p>
+                        <p>If the hypothesis is broader, you may need multiple variants. For example, if you are testing
+                            personalization by segment across copy, intent, product focus, or messaging angle, the
+                            experiment may require several distinct variants to properly cover the test space.</p>
+                        <p>For each variant, Neon Blue automatically generates a prompt based on the test proposal
+                            defined in Section 3.3. That prompt is then used to produce the individual generations
+                            within the variant.</p>
+                        <p>Once generations are complete, you can refine them in two ways:</p>
+                        <ul
+                            style="font-size: 0.9rem; color: var(--nb-gray); line-height: 1.65; margin: 0 0 16px; padding-left: 24px;">
+                            <li>edit individual generations one by one using AI regeneration</li>
+                            <li>edit the variant as a whole to regenerate a broader set of outputs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-3-5">
+                    <div class="sec-header"><span class="sec-num">3.5</span><h3>Launch</h3></div>
+                    <div class="section-body">
+                        <p>Once creative has been reviewed and approved, the experiment moves to launch. This step happens in your platform — your email tool, ad manager, CMS, or push provider — not inside Neon Blue.</p>
+                        <p>Neon Blue's role here is to ensure nothing is missed before you go live. Before launching, QA your setup: confirm the variants are correctly assigned, targeting is correct, traffic splits match the proposal, success metrics are tracked, and a clear end date or significance threshold is defined.</p>
+                        <p>A test that goes live with a broken tracking setup, an unintended audience overlap, or unequal traffic splits produces results you can't trust. The launch step is where discipline matters most.</p>
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-3-6">
+                    <div class="sec-header"><span class="sec-num">3.6</span><h3>Results &amp; Next Steps</h3></div>
+                    <div class="section-body">
+                        <p>Once a test reaches statistical significance — or its predetermined end date — results are reviewed inside Neon Blue. The goal of the results step is not just to identify a winner, but to extract a documented learning.</p>
+                        <p>A complete result includes:</p>
+                        <ul style="font-size: 0.9rem; color: var(--nb-gray); line-height: 1.65; margin: 0 0 16px; padding-left: 24px;">
+                            <li>A summary of the learning</li>
+                            <li>The data that supports it</li>
+                            <li>The next action or follow-on test it implies</li>
+                        </ul>
+                        <p>Results that are not documented become forgotten. The learning library built through each test is what allows your creative programme to compound over time — each test informing the next hypothesis, each hypothesis sharpening your understanding of your audience.</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ══ MODULE 4 ══ -->
+            <div class="module-block" id="module-4">
+                <div class="mod-header">
+                    <div class="mod-eyebrow">
+                        <span class="mod-label">Module 04</span>
+                        <span class="mod-rule"></span>
+                        <span class="mod-read">5 min read</span>
+                    </div>
+                    <h2>Creative Variants Deep Dive</h2>
+                    <p>
+                        The art and science of building variants that produce real learnings — how to map concepts, cleanly isolate variables, and avoid common experimental pitfalls.
+                    </p>
+                </div>
+
+                <div class="mod-section" id="s-4-1">
+                    <div class="sec-header"><span class="sec-num">4.1</span><h3>What Makes a Great Variant</h3></div>
+                    <div class="section-body">
+                        <p>Not all variants are created equal. A great variant is designed to isolate a specific question and answer it clearly. Here's what strong variants look like:</p>
+                        <p><strong>Each variant tests a distinct concept:</strong> Not minor word swaps — fundamentally different creative approaches. If you can't articulate what's different about this variant in one sentence, it's not different enough.</p>
+                        <p><strong>The variable is cleanly isolated:</strong> Everything except the thing being tested stays constant. If you change both the subject line and the CTA, you can't attribute the result to either one.</p>
+                        <p><strong>They span the range of possibilities:</strong> Good variant sets explore the full spectrum. If testing tone, include formal, conversational, and playful — not just two shades of formal.</p>
+                        <p><strong>They're grounded in strategy:</strong> Every variant maps back to a hypothesis. Random creative experiments produce random learnings.</p>
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-4-2">
+                    <div class="sec-header"><span class="sec-num">4.2</span><h3>Variant Examples</h3></div>
+                    <div class="section-body">
+                        <p>Here are the most common variables we test, roughly ordered by typical impact:</p>
+                        <p><strong>Message structure and strategy:</strong> The overall approach of the email. Benefit-led vs. feature-led vs. social-proof-driven. Single-CTA vs. multi-option. Long-form vs. concise. These are the biggest swings and often produce the biggest results.</p>
+                        <p><strong>Subject line and preview text:</strong> We test different framing (question vs. statement), value props, personalization (name, behavior, preference), and emotional register (urgency, curiosity, excitement).</p>
+                        <p><strong>Body copy and tone:</strong> How the message reads. Formal vs. casual. Instructional vs. inspirational. What sounds "right" to the marketing team doesn't always resonate with users.</p>
+                        <p><strong>Visual layout and design:</strong> Image-heavy vs. text-focused. Single column vs. multi-card. Hero image vs. inline graphics. Template changes vs. full redesigns.</p>
+                        <p><strong>Timing and cadence:</strong> When the message sends relative to a trigger event. Especially impactful in onboarding and reactivation flows.</p>
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-4-3">
+                    <div class="sec-header"><span class="sec-num">4.3</span><h3>Common Pitfalls</h3></div>
+                    <div class="section-body">
+                        <p>Even well-structured tests can fail to produce useful learnings if the experiment design is
+                            weak. The most common pitfalls are:</p>
+
+                        <p><strong>Testing too small:</strong> "Buy Now" vs. "Shop Now" is unlikely to teach you
+                            anything meaningful. Test different reasons to buy, not just different button labels.</p>
+                        <p><strong>Changing multiple things at once:</strong> If Variant B has a different subject line,
+                            hero image, and CTA — and wins — you won’t know which change actually mattered.</p>
+                        <p><strong>No control variant:</strong> Without a baseline, you can see which variant beat the
+                            others, but not whether any of them outperformed your current approach.</p>
+                        <p><strong>Wrong success metric:</strong> A subject line that lifts opens but tanks clicks is
+                            not a winner. Define primary and secondary metrics upfront.</p>
+                        <p><strong>Stopping too early:</strong> Small sample sizes produce unreliable results. Let
+                            experiments run until they reach significance before calling a winner.</p>
+                        <p><strong>No documentation:</strong> A result without context is just a number. Every
+                            experiment should produce a documented learning that future tests can build on.</p>
+
+                    </div>
+                </div>
+
+                <div class="mod-section" id="s-4-4">
+                    <div class="sec-header"><span class="sec-num">4.4</span><h3>From Variants to Learnings</h3></div>
+                    <div class="section-body">
+                        <p>The real value of creative variants isn't finding winners — it's building understanding. Over
+                            the
+                            course of a quarter, a structured program reveals patterns: your audience responds to social
+                            proof more than feature lists. They prefer concise messaging. Personalization in headlines
+                            lifts
+                            engagement but not always conversion. Video ads outperform static for acquisition but not
+                            retargeting. These patterns become your creative playbook.</p>
+                        <p>And because Neon Blue tests across email, push, ads, and landing pages, insights from one
+                            channel
+                            compound across every other. A winning value proposition in email informs your ad creative.
+                            A
+                            high-converting landing page structure shapes your push notification strategy.</p>
+                        <div class="closing">
+                            <p>That's the endgame: not just better performance in one channel, but a deeper
+                                understanding of
+                                what makes your customers tick — everywhere you reach them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0})" title="Back to top">↑</button>
+
+    <div class="page-footer">
+        <p><strong>Neon Blue</strong> — Creative experimentation, systematised.</p>
+        <p>Questions? Reach out to your Neon Blue team or <a href="mailto:hello@neonblue.app">hello@neonblue.app</a></p>
+    </div>
+    <script>
+        // ── Module Nav: show/hide on scroll + progress bar + active pill ──
+        const moduleNav = document.getElementById('moduleNav');
+        const backToTop = document.getElementById('backToTop');
+        const modPills = document.querySelectorAll('.mod-nav-pill');
+        const moduleEls = [
+            document.getElementById('module-1'),
+            document.getElementById('module-2'),
+            document.getElementById('module-3'),
+            document.getElementById('module-4'),
+        ];
+        let ticking = false;
+        const heroEl = document.querySelector('.page-header');
+
+        function updateScroll() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = (scrollTop / docHeight) * 100;
+
+            // Back to top visibility
+            backToTop.classList.toggle('visible', scrollTop > 600);
+
+            // Show module nav after hero
+            const heroBottom = heroEl ? heroEl.offsetHeight - 60 : 400;
+            if (moduleNav) {
+                moduleNav.style.transform = scrollTop > heroBottom ? 'translateY(0)' : 'translateY(-100%)';
+            }
+
+            // Highlight which module pill is active
+            let activeIdx = 0;
+            moduleEls.forEach((el, i) => {
+                if (el && el.getBoundingClientRect().top <= 80) activeIdx = i;
+            });
+            modPills.forEach((pill, i) => {
+                pill.classList.toggle('active', i === activeIdx);
+            });
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        });
+
+        // ── Keyboard navigation ──
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            const sections = [...document.querySelectorAll('.mod-section[id]')];
+            const scrollY = window.scrollY + 120;
+
+            let currentIdx = 0;
+            for (let i = sections.length - 1; i >= 0; i--) {
+                if (sections[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
+                    currentIdx = i;
+                    break;
+                }
+            }
+
+            if (e.key === 'ArrowDown' && currentIdx < sections.length - 1) {
+                e.preventDefault();
+                sections[currentIdx + 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (e.key === 'ArrowUp' && currentIdx > 0) {
+                e.preventDefault();
+                sections[currentIdx - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (e.key === 'Escape') {
+                const current = sections[currentIdx];
+                if (current && !current.classList.contains('collapsed')) {
+                    current.classList.add('collapsed');
+                }
+            }
+        });
+    </script>
+</body>
+
+
+</html>
